@@ -1,23 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import { InfoProvider } from "./context/InfoContext";
+import { AuthProvider } from "./context/AuthContext";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+//import "./App.css";
+import PrivateRoute from "./components/PrivateRoute";
+import Login from "./pages/Login";
+import Home from "./pages/Home";
+import PMPage from "./pages/PMPage";
+import MMPage from "./pages/MMPage";
+import FMPage from "./pages/FMPage";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <AuthProvider>
+          <InfoProvider>
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <PrivateRoute>
+                    <Home />
+                  </PrivateRoute>
+                }
+              />
+              <Route path="/login" element={<Login />} />
+              <Route path="/pm" element={<PMPage />} />
+              <Route path="/mm" element={<MMPage />} />
+              <Route path="/fm" element={<FMPage />} />
+            </Routes>
+          </InfoProvider>
+        </AuthProvider>
+      </BrowserRouter>
     </div>
   );
 }
