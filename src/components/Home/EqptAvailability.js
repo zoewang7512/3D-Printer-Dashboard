@@ -8,14 +8,13 @@ const EqptAvailability = ({ value }) => {
     <CircularProgressbar
       value={`${per}`}
       text={`${per}%`}
-      //text={value.idleEqpt}
       background
       backgroundPadding={6}
       styles={buildStyles({
         backgroundColor: "#FF6D28",
         textColor: "#222",
         pathColor: "#222",
-        trailColor: "transparent"
+        trailColor: "transparent",
       })}
     />
   );

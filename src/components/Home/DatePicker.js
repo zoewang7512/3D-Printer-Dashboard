@@ -1,8 +1,11 @@
 import React, { useState, useContext } from "react";
 import Calendar from "react-calendar";
 import dayjs from "dayjs";
+//context
 import InfoContext from "../../context/InfoContext";
+//css
 import "react-calendar/dist/Calendar.css";
+import "../styles.css";
 
 const DatePicker = () => {
   //被選擇的那天
@@ -16,17 +19,6 @@ const DatePicker = () => {
     setallFMData,
     setLast5FMdata,
   } = useContext(InfoContext);
-  /*
-  const [ProductionData, setProductionData] = useState([
-    { name: "Loading...", id: "initial" }
-  ]);
-  const [EquipmentLog, setEquipmentLog] = useState([
-    { name: "Loading...", id: "initial" }
-  ]);
-  const [MaintenanceLog, setMaintenanceLog] = useState([
-    { name: "Loading...", id: "initial" }
-  ]);
-*/
 
   const handleOnclick = (date) => {
     const filteredData = ProductionData.filter((item) => {
@@ -78,8 +70,9 @@ const DatePicker = () => {
       value={selectedDate}
       onClickDay={handleOnclick}
       maxDate={new Date()} // will not allow date later than today
-      minDate={new Date(2022, 10, 13)} // will not allow date before 13 Nov 2022
-      formatDay={(locale, date) => dayjs(date).format("D")} //移除後面的日期及顯示移除數字前方的0
+      minDate={new Date(2024, 2, 23)} // will not allow date before 23 Mar 2024
+      formatDay={(locale, date) => dayjs(date).format("D")}
+      className="mx-auto" //移除後面的日期及顯示移除數字前方的0
     />
   );
 };

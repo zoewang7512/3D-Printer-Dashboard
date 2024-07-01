@@ -1,9 +1,11 @@
 import React, { useState, useRef } from "react";
-import { Alert, Form, Button, FormGroup } from "react-bootstrap";
+//context
 import { useAuth } from "../../context/AuthContext";
+//react-bootstrap
+import { Alert, Form, Button } from "react-bootstrap";
 
-const EditFMForm = ({ theData }) => {
-  const [error, setError] = useState("");
+const EditFMForm = ({ theData, handleClose }) => {
+  //const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const id = theData.id;
@@ -24,7 +26,7 @@ const EditFMForm = ({ theData }) => {
     e.preventDefault();
 
     try {
-      setError("");
+      //setError("");
       setLoading(true);
       await handleFMEdit(
         id,
@@ -35,23 +37,27 @@ const EditFMForm = ({ theData }) => {
         faultEqptRef.current.value
       );
     } catch {
-      setError("資料新增錯誤");
+      //setError("資料修改錯誤");
+      alert("資料修改錯誤");
     }
+
     setLoading(false);
+    handleClose();
   }
 
   return (
     <div>
       <Form onSubmit={handleSubmit}>
         <Form.Group>
-          {error && <Alert color="danger">{error}</Alert>}
+          {/*error && <Alert variant="danger">{error}</Alert>*/}
           <Form.Label htmlFor="exampleDate">日期</Form.Label>
           <Form.Control
             id="equipmentDate"
             name="equipmentDate"
             type="date"
             defaultValue={date}
-            innerRef={dateRef}
+            ref={dateRef}
+            required
           />
         </Form.Group>
         <Form.Group>
@@ -61,7 +67,8 @@ const EditFMForm = ({ theData }) => {
             name="equipmentTotalEqpt"
             type="number"
             defaultValue={totalEqpt}
-            innerRef={totalEqptRef}
+            ref={totalEqptRef}
+            required
           />
         </Form.Group>
         <Form.Group>
@@ -71,7 +78,8 @@ const EditFMForm = ({ theData }) => {
             name="equipmentRunEqpt"
             type="number"
             defaultValue={runEqpt}
-            innerRef={runEqptRef}
+            ref={runEqptRef}
+            required
           />
         </Form.Group>
         <Form.Group>
@@ -81,7 +89,8 @@ const EditFMForm = ({ theData }) => {
             name="equipmentIdleEqpt"
             type="number"
             defaultValue={idleEqpt}
-            innerRef={idleEqptRef}
+            ref={idleEqptRef}
+            required
           />
         </Form.Group>
         <Form.Group>
@@ -91,8 +100,9 @@ const EditFMForm = ({ theData }) => {
             name="equipmentFaultEqpt"
             type="number"
             defaultValue={faultEqpt}
-            innerRef={faultEqptRef}
+            ref={faultEqptRef}
             className="mb-3"
+            required
           />
         </Form.Group>
         <Button color="info" type="submit">

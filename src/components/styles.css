@@ -1,23 +1,3 @@
-.home {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 5px;
-  height: 90vh;
-}
-.mmpage {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-gap: 5px;
-  height: 90vh;
-}
-
-.mmleft {
-  background-color: #000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .header {
   background-color: black;
   display: flex;
@@ -25,7 +5,6 @@
   font-size: 20px;
   font-weight: bold;
   padding: 1rem;
-  height: 10vh;
 }
 
 .header a {
@@ -49,7 +28,6 @@
 }
 
 /*sidebar*/
-
 .sidebar-icons {
   margin: 5% 5% 10px 0px;
   padding: 5px;
@@ -81,12 +59,11 @@ li:hover {
 .react-calendar {
   width: 300px;
   max-width: 100%;
-  background-color: #222;
-  color: #fff;
+  background-color: #222 !important;
+  color: #ff6d2e;
   border-radius: 8px;
   font-family: Arial, Helvetica, sans-serif;
-  line-height: 1.125em;
-  margin: 1rem;
+  line-height: 1em;
 }
 /*日曆標題*/
 .react-calendar__navigation button {
@@ -99,11 +76,11 @@ li:hover {
 /*日曆標題可以按的按鈕的hover效果*/
 .react-calendar__navigation button:enabled:hover,
 .react-calendar__navigation button:enabled:focus {
-  background-color: #222;
+  background-color: #222 !important;
 }
 /*日曆標題無法按的按鈕設計*/
 .react-calendar__navigation button[disabled] {
-  background-color: #222;
+  background-color: #222 !important;
   color: #222;
 }
 abbr[title] {
@@ -112,6 +89,8 @@ abbr[title] {
 
 .react-calendar__tile {
   color: #fff;
+  /*color: #ff6d28;*/
+  background-color: #222;
 }
 
 .react-calendar__tile__weekday {
@@ -121,27 +100,33 @@ abbr[title] {
 /*日期可以選擇的hover效果*/
 .react-calendar__tile:enabled:hover,
 .react-calendar__tile:enabled:focus {
-  background: #ff6d28;
+  background-color: #ff6d28 !important;
   color: #fff;
   border-radius: 6px;
 }
 
 .react-calendar__tile:disabled {
-  background-color: #222222;
-  color: #222;
+  background-color: #222222 !important;
+  color: #222 !important;
 }
 
 /*今天*/
 .react-calendar__tile--now {
-  background-color: #222222;
+  background-color: #222222 !important;
   border-radius: 6px;
   font-weight: bold;
   color: #ff6d28;
 }
+.react-calendar__tile--now:focus {
+  background-color: #ff6d28;
+  border-radius: 6px;
+  font-weight: bold;
+  color: white;
+}
 /*今天華過去及選取*/
 .react-calendar__tile--now:enabled:hover,
 .react-calendar__tile--now:enabled:focus {
-  background: #6f48eb33;
+  background-color: #6f48eb33;
   border-radius: 6px;
   font-weight: bold;
   color: #ff6d28;
@@ -149,64 +134,22 @@ abbr[title] {
 
 .react-calendar__tile--active:enabled:hover,
 .react-calendar__tile--active:enabled:focus {
-  background: #ff6d28;
+  background-color: #ff6d28;
   color: white;
   font-weight: bold;
-}
-
-.pmchart {
-  margin: 5% 0px 0px 0px;
-}
-/*
-.fuelProgressbar {
-  padding: 0 1em;
-  width: 150px;
-  height: 150px;
-}
-*/
-
-.CircularProgressbarArea {
-  margin: 3% 0px;
-  display: grid;
-  justify-content: center;
-  align-content: center;
 }
 
 .eqptAvailability {
   width: 230px;
   height: 230px;
   font-family: "Zen Dots", cursive;
+  margin: 0 auto;
 }
 .eqptAvailabilitySmall {
   width: 150px;
   height: 150px;
   font-family: "Zen Dots", cursive;
-}
-
-.tableArea {
-  margin: 3% 0px;
-  font-size: 12px;
-}
-
-.tableHeader {
-  margin: 3% 0px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.tableAreaMM {
-  margin-top: 0px;
-  font-size: 12px;
-}
-.tableHeaderMM {
-  margin: 1% 0px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.tr td {
-  padding: 1rem;
+  margin: 0 auto;
 }
 
 .login {
@@ -224,20 +167,18 @@ abbr[title] {
   border-radius: 5%;
   padding: 15px;
 }
-
+/*
 .pmRight {
   margin: 3% 0px;
-}
+}*/
 
 .pagination {
   list-style: none;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
   font-size: 1rem;
-  gap: 2px;
+  gap: 1px;
 }
 
 .pagination .page-num {
@@ -263,25 +204,4 @@ abbr[title] {
   justify-content: center;
   margin: 10px 0px;
   gap: 15px;
-}
-
-/*medium size*/
-@media (max-width: 771px) {
-  .home {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
-    height: 90vh;
-  }
-  .mmpage {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
-  }
-  .login {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
 }

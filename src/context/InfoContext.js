@@ -6,13 +6,13 @@ const InfoContext = createContext();
 
 export function InfoProvider({ children }) {
   const [ProductionData, setProductionData] = useState([
-    { name: "Loading...", id: "initial" }
+    { name: "Loading...", id: "initial" },
   ]);
   const [EquipmentLog, setEquipmentLog] = useState([
-    { name: "Loading...", id: "initial" }
+    { name: "Loading...", id: "initial" },
   ]);
   const [MaintenanceLog, setMaintenanceLog] = useState([
-    { name: "Loading...", id: "initial" }
+    { name: "Loading...", id: "initial" },
   ]);
   //firebase data
 
@@ -54,32 +54,32 @@ export function InfoProvider({ children }) {
   //DateInfo
   const defaultDateInfo = [
     {
-      planOutput: "",
-      currentOutput: "",
-      date: "",
-      id: ""
-    }
+      planOutput: "--",
+      currentOutput: "--",
+      date: "--",
+      id: "--",
+    },
   ];
   const [allDateInfo, setAllDateInfo] = useState(defaultDateInfo);
 
   //found the 7  pieces of data
   const [last5data, setLast5data] = useState([
-    { name: "Loading...", id: "initial" }
+    { name: "Loading...", id: "initial" },
   ]);
 
   //Mis
   const defaultFMData = [
     {
       totalEqpt: "170",
-      runEqpt: "",
-      idleEqpt: "",
-      faultEqpt: ""
-    }
+      runEqpt: "--",
+      idleEqpt: "--",
+      faultEqpt: "--",
+    },
   ];
   const [allFMData, setallFMData] = useState(defaultFMData);
 
   const [last5FMdata, setLast5FMdata] = useState([
-    { name: "Loading...", id: "initial" }
+    { name: "Loading...", id: "initial" },
   ]);
 
   const [queryStartDate, setQueryStartDate] = useState("");
@@ -108,7 +108,7 @@ export function InfoProvider({ children }) {
         queryStartDate,
         setQueryStartDate,
         queryEndDate,
-        setQueryEndDate
+        setQueryEndDate,
       }}
     >
       {children}

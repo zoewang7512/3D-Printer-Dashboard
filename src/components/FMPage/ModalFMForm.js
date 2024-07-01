@@ -1,9 +1,11 @@
 import React, { useState, useRef } from "react";
-import { Modal, Form, Button, Alert } from "react-bootstrap";
+//context
 import { useAuth } from "../../context/AuthContext";
+//react-bootstrap
+import { Modal, Form, Button, Alert } from "react-bootstrap";
 
 const ModalFMForm = ({ show, handleClose }) => {
-  const [error, setError] = useState("");
+  //const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const dateRef = useRef();
@@ -17,7 +19,7 @@ const ModalFMForm = ({ show, handleClose }) => {
     e.preventDefault();
 
     try {
-      setError("");
+      //setError("");
       setLoading(true);
       await handleFMNew(
         totalEqptRef.current.value,
@@ -27,7 +29,8 @@ const ModalFMForm = ({ show, handleClose }) => {
         faultEqptRef.current.value
       );
     } catch {
-      setError("資料新增錯誤");
+      //setError("資料新增錯誤");
+      alert("資料新增錯誤");
     }
     setLoading(false);
     handleClose();
@@ -46,52 +49,57 @@ const ModalFMForm = ({ show, handleClose }) => {
         </Modal.Header>
 
         <Modal.Body>
-          {error && <Alert color="danger">{error}</Alert>}
+          {/*error && <Alert variant="danger">{error}</Alert>*/}
           <Form onSubmit={handleSubmit}>
             <Form.Group>
-              <Form.Label for="exampleDate">日期</Form.Label>
+              <Form.Label htmlFor="exampleDate">日期</Form.Label>
               <Form.Control
                 id="equipmentDate"
                 name="equipmentDate"
                 type="date"
-                innerRef={dateRef}
+                ref={dateRef}
+                required
               />
             </Form.Group>
             <Form.Group>
-              <Form.Label for="totalEqpt">總設備數</Form.Label>
+              <Form.Label htmlFor="totalEqpt">總設備數</Form.Label>
               <Form.Control
                 id="equipmentTotalEqpt"
                 name="equipmentTotalEqpt"
                 type="number"
-                innerRef={totalEqptRef}
+                ref={totalEqptRef}
+                required
               />
             </Form.Group>
             <Form.Group>
-              <Form.Label for="runEqpt">運行設備數</Form.Label>
+              <Form.Label htmlFor="runEqpt">運行設備數</Form.Label>
               <Form.Control
                 id="equipmentRunEqpt"
                 name="equipmentRunEqpt"
                 type="number"
-                innerRef={runEqptRef}
+                ref={runEqptRef}
+                required
               />
             </Form.Group>
             <Form.Group>
-              <Form.Label for="idleEqpt">閒置設備數</Form.Label>
+              <Form.Label htmlFor="idleEqpt">閒置設備數</Form.Label>
               <Form.Control
                 id="equipmentIdleEqpt"
                 name="equipmentIdleEqpt"
                 type="number"
-                innerRef={idleEqptRef}
+                ref={idleEqptRef}
+                required
               />
             </Form.Group>
             <Form.Group>
-              <Form.Label for="faultEqpt">故障設備數</Form.Label>
+              <Form.Label htmlFor="faultEqpt">故障設備數</Form.Label>
               <Form.Control
                 id="equipmentFaultEqpt"
                 name="equipmentFaultEqpt"
                 type="number"
                 className="mb-3"
-                innerRef={faultEqptRef}
+                ref={faultEqptRef}
+                required
               />
             </Form.Group>
 

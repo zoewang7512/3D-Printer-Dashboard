@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import dayjs from "dayjs";
+//context
 import { useAuth } from "../../context/AuthContext";
-import { MdEdit, MdDeleteForever } from "react-icons/md";
-import { Modal } from "react-bootstrap";
+//components
 import EditForm from "./EditForm";
+//react-bootstrap
+import { Modal } from "react-bootstrap";
+//icons
+import { MdEdit, MdDeleteForever } from "react-icons/md";
 
 const PMTable = ({ data }) => {
   const { handlePMDel } = useAuth();
@@ -35,7 +39,7 @@ const PMTable = ({ data }) => {
           <Modal.Title>生產計劃表─編輯資料</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <EditForm theData={data} />
+          <EditForm theData={data} handleClose={handleClose} />
         </Modal.Body>
       </Modal>
     </>

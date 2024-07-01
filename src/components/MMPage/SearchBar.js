@@ -1,7 +1,10 @@
 import { useContext } from "react";
-import { Form, InputGroup, Row, Col } from "react-bootstrap";
-import { BsSearch } from "react-icons/bs";
+//context
 import InfoContext from "../../context/InfoContext";
+//react-bootstrap
+import { Form, InputGroup, Row, Col } from "react-bootstrap";
+//icons
+import { BsSearch } from "react-icons/bs";
 
 const SearchBar = () => {
   const { setQuerydata, setQueryStartDate, setQueryEndDate } =
@@ -28,6 +31,7 @@ const SearchBar = () => {
           <Col sm={8}>
             <Form.Control
               type="date"
+              asp-format="{0:yyyy-MM-dd}"
               onChange={(e) => setQueryStartDate(e.target.value)}
               className="mb-3"
             />
@@ -40,7 +44,7 @@ const SearchBar = () => {
           <Col sm={8}>
             <Form.Control
               type="date"
-              defaultValue={new Date()}
+              asp-format="{0:yyyy-MM-dd}"
               onChange={(e) => setQueryEndDate(e.target.value)}
               className="mb-3"
             />

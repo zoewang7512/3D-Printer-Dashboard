@@ -1,10 +1,11 @@
+import React, { useState, useRef } from "react";
+////context
+import { useAuth } from "../../context/AuthContext";
+//react-bootstrap
 import { Alert, Form, Button } from "react-bootstrap";
 
-import React, { useState, useRef } from "react";
-import { useAuth } from "../../context/AuthContext";
-
-const EditForm = ({ theData }) => {
-  const [error, setError] = useState("");
+const EditForm = ({ theData, handleClose }) => {
+  //const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const id = theData.id;
@@ -20,7 +21,7 @@ const EditForm = ({ theData }) => {
     e.preventDefault();
 
     try {
-      setError("");
+      //setError("");
       setLoading(true);
       await handlePMEdit(
         id,
@@ -29,16 +30,18 @@ const EditForm = ({ theData }) => {
         planOutputRef.current.value
       );
     } catch {
-      setError("資料新增錯誤");
+      // setError("資料修改錯誤");
+      alert("資料修改錯誤");
     }
     setLoading(false);
+    handleClose();
   }
 
   return (
     <div>
       <Form onSubmit={handleSubmit}>
         <Form.Group>
-          {error && <Alert color="danger">{error}</Alert>}
+          {/*error && <Alert variant="danger">{error}</Alert>*/}
 
           <Form.Label htmlFor="exampleDate">日期</Form.Label>
           <Form.Control
@@ -46,8 +49,8 @@ const EditForm = ({ theData }) => {
             name="productionDate"
             type="date"
             defaultValue={date}
-            innerRef={dateRef}
-            //onChange={nameChange}
+            ref={dateRef}
+            required
           />
         </Form.Group>
         <Form.Group>
@@ -56,10 +59,10 @@ const EditForm = ({ theData }) => {
             id="productionPlanOutput"
             name="productionPlanOutput"
             //placeholder="輸入預計產量"
-            type="text"
             defaultValue={planOutput}
-            innerRef={planOutputRef}
-            //onChange={nameChange}
+            ref={planOutputRef}
+            type="number"
+            required
           />
         </Form.Group>
         <Form.Group>
@@ -68,10 +71,10 @@ const EditForm = ({ theData }) => {
             id="productionCurrentOutput"
             name="productionCurrentOutput"
             className="mb-3"
-            type="text"
             defaultValue={currentOutput}
-            innerRef={currentOutputRef}
-            //onChange={valueChange}
+            ref={currentOutputRef}
+            type="number"
+            required
           />
         </Form.Group>
         <Button variant="info" type="submit">

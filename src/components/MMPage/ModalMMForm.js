@@ -1,9 +1,11 @@
 import React, { useState, useRef } from "react";
-import { Modal, Form, Button, Alert } from "react-bootstrap";
+//context
 import { useAuth } from "../../context/AuthContext";
+//react-bootstrap
+import { Modal, Form, Button, Alert } from "react-bootstrap";
 
 const ModalMMForm = ({ show, handleClose }) => {
-  const [error, setError] = useState("");
+  //const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const dateRef = useRef();
@@ -16,7 +18,7 @@ const ModalMMForm = ({ show, handleClose }) => {
     e.preventDefault();
 
     try {
-      setError("");
+      //setError("");
       setLoading(true);
       await handleMMNew(
         applicantRef.current.value,
@@ -25,7 +27,8 @@ const ModalMMForm = ({ show, handleClose }) => {
         serialNumRef.current.value
       );
     } catch {
-      setError("資料新增錯誤");
+      //setError("資料新增錯誤");
+      alert("資料新增成功");
     }
     setLoading(false);
     handleClose();
@@ -44,43 +47,47 @@ const ModalMMForm = ({ show, handleClose }) => {
         </Modal.Header>
 
         <Modal.Body>
-          {error && <Alert variant="danger">{error}</Alert>}
+          {/*error && <Alert variant="danger">{error}</Alert>*/}
           <Form onSubmit={handleSubmit}>
             <Form.Group>
-              <Form.Label for="exampleDate">日期</Form.Label>
+              <Form.Label htmlFor="exampleDate">日期</Form.Label>
               <Form.Control
                 id="maintenanceDate"
                 name="maintenanceDate"
                 type="date"
-                innerRef={dateRef}
+                ref={dateRef}
+                required
               />
             </Form.Group>
             <Form.Group>
-              <Form.Label for="serialNum">機身號碼</Form.Label>
+              <Form.Label htmlFor="serialNum">機身號碼</Form.Label>
               <Form.Control
                 id="serialNum"
                 name="serialNum"
                 type="text"
-                innerRef={serialNumRef}
+                ref={serialNumRef}
+                required
               />
             </Form.Group>
             <Form.Group>
-              <Form.Label for="maintenanceNotes">備註</Form.Label>
+              <Form.Label htmlFor="maintenanceNotes">備註</Form.Label>
               <Form.Control
                 id="maintenanceNotes"
                 name="maintenanceNotes"
                 type="text"
-                innerRef={notesRef}
+                ref={notesRef}
+                required
               />
             </Form.Group>
             <Form.Group>
-              <Form.Label for="maintenanceApplicant">人員</Form.Label>
+              <Form.Label htmlFor="maintenanceApplicant">人員</Form.Label>
               <Form.Control
                 id="applicant"
                 name="applicant"
                 type="text"
-                innerRef={applicantRef}
+                ref={applicantRef}
                 className="mb-3"
+                required
               />
             </Form.Group>
 

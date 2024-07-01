@@ -1,40 +1,30 @@
-import { Container, Row, Col } from "react-bootstrap";
 import React, { useContext } from "react";
-
+//context
 import InfoContext from "../../context/InfoContext";
+//components
 import PMChart from "./PMChart";
 import BlockCard from "../BlockCard";
+//react-bootstrap
+import { Container, Row, Col, Stack } from "react-bootstrap";
 
 const PMRight = () => {
   const { allDateInfo } = useContext(InfoContext);
-  /*
-  //現在日期
-  const [currentDay, setCurrentDay] = useState(1);
-  //抓過去五天的資料
-  const [postsPerDay, setPostsPerDay] = useState(5);
-  const [currentPosts, setCurrentPosts] = useState([]);
 
-  // const lastPostIndex = currentDay * postsPerDay;
-  //const firstPostIndex = lastPostIndex - postsPerDay;
-  const lastPostIndex = 5;
-  const firstPostIndex = 1;
-  setCurrentPosts(data.slice(firstPostIndex, lastPostIndex));
-*/
   return (
-    <div className="pmRight">
-      <Container>
-        {allDateInfo.map((value) => (
-          <>
+    <Stack gap={2} className=" mx-auto">
+      <h5>產品良率</h5>
+      {allDateInfo.map((value) => (
+        <>
+          <Container>
             <Row>
-              <h5>產品良率</h5>
-              <Col>
+              <Col sm>
                 <BlockCard
                   title={"合格產品數"}
                   text={value.currentOutput}
                   color={"#ffffff"}
                 />
               </Col>
-              <Col>
+              <Col sm>
                 <BlockCard
                   title={"良品率"}
                   text={
@@ -47,14 +37,14 @@ const PMRight = () => {
             </Row>
 
             <Row>
-              <Col>
+              <Col sm>
                 <BlockCard
                   title={"不良產品數"}
                   text={value.planOutput - value.currentOutput}
                   color={"#ffffff"}
                 />
               </Col>
-              <Col>
+              <Col sm>
                 <BlockCard
                   title={"不良率"}
                   text={
@@ -68,15 +58,12 @@ const PMRight = () => {
                 />
               </Col>
             </Row>
-          </>
-        ))}
-        <Row>
-          <Col>
-            <PMChart />
-          </Col>
-        </Row>
-      </Container>
-    </div>
+          </Container>
+        </>
+      ))}
+
+      <PMChart />
+    </Stack>
   );
 };
 export default PMRight;

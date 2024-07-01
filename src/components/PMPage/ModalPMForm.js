@@ -3,7 +3,7 @@ import React, { useState, useRef } from "react";
 import { useAuth } from "../../context/AuthContext";
 
 const ModalPMForm = ({ show, handleClose }) => {
-  const [error, setError] = useState("");
+  //const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const dateRef = useRef();
@@ -15,7 +15,7 @@ const ModalPMForm = ({ show, handleClose }) => {
     e.preventDefault();
 
     try {
-      setError("");
+      //setError("");
       setLoading(true);
       await handlePMNew(
         currentOutputRef.current.value,
@@ -23,7 +23,8 @@ const ModalPMForm = ({ show, handleClose }) => {
         planOutputRef.current.value
       );
     } catch {
-      setError("資料新增錯誤");
+      //setError("資料新增錯誤");
+      alert("資料新增錯誤");
     }
     setLoading(false);
     handleClose();
@@ -41,7 +42,7 @@ const ModalPMForm = ({ show, handleClose }) => {
           <Modal.Title>生產計劃表─新增資料</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {error && <Alert variant="danger">{error}</Alert>}
+          {/*error && <Alert variant="danger">{error}</Alert>*/}
           <Form onSubmit={handleSubmit}>
             <Form.Group>
               <Form.Label htmlFor="exampleDate">日期</Form.Label>
@@ -49,9 +50,8 @@ const ModalPMForm = ({ show, handleClose }) => {
                 id="productionDate"
                 name="productionDate"
                 type="date"
-                //value={nameVal}
-                innerRef={dateRef}
-                //onChange={nameChange}
+                ref={dateRef}
+                required
               />
             </Form.Group>
             <Form.Group>
@@ -59,11 +59,9 @@ const ModalPMForm = ({ show, handleClose }) => {
               <Form.Control
                 id="productionPlanOutput"
                 name="productionPlanOutput"
-                //placeholder="輸入預計產量"
-                type="text"
-                //value={nameVal}
-                innerRef={planOutputRef}
-                //onChange={nameChange}
+                type="number"
+                ref={planOutputRef}
+                required
               />
             </Form.Group>
             <Form.Group>
@@ -71,10 +69,10 @@ const ModalPMForm = ({ show, handleClose }) => {
               <Form.Control
                 id="productionCurrentOutput"
                 name="productionCurrentOutput"
-                //placeholder="enter the color value"
-                type="text"
-                innerRef={currentOutputRef}
+                type="number"
+                ref={currentOutputRef}
                 className="mb-3"
+                required
               />
             </Form.Group>
             <Button variant="info" type="submit">

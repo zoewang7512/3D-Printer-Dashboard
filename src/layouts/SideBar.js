@@ -1,17 +1,20 @@
 import React, { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+//context
+import { useAuth } from "../context/AuthContext";
+//react-bootstrap
 import { Offcanvas } from "react-bootstrap";
+//icons
 import { BsTools } from "react-icons/bs";
 import { TiPrinter } from "react-icons/ti";
 import { TbDeviceDesktopAnalytics } from "react-icons/tb";
 import { AiOutlineCalendar } from "react-icons/ai";
 import { MdLogout } from "react-icons/md";
-import { Link } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
 
 const SideBar = ({ handleClose, show }) => {
   const [error, setError] = useState("");
-  const { logout } = useAuth();
+  //const [userName,setUserName]= useState("");
+  const { logout, currentUser } = useAuth();
   const navigate = useNavigate();
 
   async function handleLogOut() {
@@ -36,7 +39,7 @@ const SideBar = ({ handleClose, show }) => {
         }}
       >
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>3D列印機設備管理面板</Offcanvas.Title>
+          <Offcanvas.Title>您好 {currentUser?.email}</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
           <ul>
@@ -64,13 +67,9 @@ const SideBar = ({ handleClose, show }) => {
                 維修管理頁面
               </li>
             </Link>
-            <li>
+            <li onClick={handleLogOut}>
               {error && alert({ error })}
-              <MdLogout
-                className="sidebar-icons"
-                onClick={handleLogOut}
-                id="logoutText"
-              />
+              <MdLogout className="sidebar-icons" id="logoutText" />
               登出
             </li>
           </ul>

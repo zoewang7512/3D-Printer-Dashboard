@@ -1,18 +1,23 @@
 import React, { useState } from "react";
-import { useAuth } from "../context/AuthContext";
+//react-router
 import { Link } from "react-router-dom";
+//context
+import { useAuth } from "../context/AuthContext";
+//components
 import { TiPrinter, TiThMenu } from "react-icons/ti";
+//icons
 import SideBar from "./SideBar";
 
 const Header = () => {
   const { currentUser } = useAuth();
 
+  //siderbar
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   return (
-    <div className="header">
+    <div className="header vh-10">
       <div className="header-left">
         <span>
           <Link to="/">
@@ -30,7 +35,6 @@ const Header = () => {
             ""
           )}
         </span>
-        {/*showSideBar && <SideBar closeBar={setShowSideBar} />*/}
         <SideBar show={show} handleClose={handleClose} />
       </div>
     </div>

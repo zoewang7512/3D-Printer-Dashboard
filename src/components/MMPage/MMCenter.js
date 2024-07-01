@@ -1,14 +1,17 @@
 import React, { useState, useContext } from "react";
-import { Container, Row, Col, Table } from "react-bootstrap";
-import { AiFillPlusSquare } from "react-icons/ai";
+import dayjs from "dayjs";
 import { CSVLink } from "react-csv";
 import ReactPaginate from "react-paginate";
-
+//context
+import InfoContext from "../../context/InfoContext";
+//components
 import MMTable from "./MMTable";
 import ModalMMForm from "./ModalMMForm";
-import InfoContext from "../../context/InfoContext";
+//react-bootstrap
+import { Table, Stack } from "react-bootstrap";
+//icons
+import { AiFillPlusSquare } from "react-icons/ai";
 
-import dayjs from "dayjs";
 const isSameOrAfter = require("dayjs/plugin/isSameOrAfter");
 const isSameOrBefore = require("dayjs/plugin/isSameOrBefore");
 dayjs.extend(isSameOrBefore);
@@ -50,70 +53,63 @@ const MMCenter = () => {
   };
 
   return (
-    <Container>
-      <Row>
-        <Col>
-          <div className="tableAreaMM">
-            <div className="tableHeaderMM">
-              <div></div>
-              <div>
-                <h5>維修管理頁面</h5>
-              </div>
-              <div>
-                <AiFillPlusSquare
-                  onClick={handleShow}
-                  style={{ color: "#ff6d28", fontSize: "20px" }}
-                />
-              </div>
-            </div>
-            <Table variant="dark">
-              <thead>
-                <tr>
-                  <th>日期</th>
-                  <th>機身號碼</th>
-                  <th>備註</th>
-                  <th>人員</th>
-                  <th></th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                {currentPosts.map((item) => (
-                  <tr key={item.id}>
-                    <MMTable data={item} />
-                  </tr>
-                ))}
-              </tbody>
-            </Table>
-          </div>
-          <ReactPaginate
-            breakLabel="..."
-            nextLabel=">"
-            onPageChange={handlePageClick}
-            pageRangeDisplayed={3}
-            marginPagesDisplayed={1}
-            pageCount={pageCount}
-            previousLabel="<"
-            renderOnZeroPageCount={null}
-            containerClassName="pagination"
-            pageLinkClassName="page-num"
-            previousLinkClassName="page-num"
-            nextLinkClassName="page-num"
-            activeLinkClassName="active"
-          />
-          <CSVLink
-            data={filteredTime}
-            filename={"my-mm-file.csv"}
-            className="btn w-100 mb-3"
-            style={{ backgroundColor: "#ff6d28" }}
-            target="_blank"
-          >
-            Download CSV
-          </CSVLink>
-        </Col>
-      </Row>
+    <Stack gap={1} className=" mx-auto">
+      <Stack gap={2} direction="horizontal">
+        <h5 className="me-auto">維修管理頁面</h5>
+
+        <AiFillPlusSquare
+          onClick={handleShow}
+          style={{ color: "#ff6d28", fontSize: "20px" }}
+        />
+      </Stack>
+
+      <Table variant="dark">
+        <thead>
+          <tr>
+            <th>日期</th>
+            <th>機身號碼</th>
+            <th>備註</th>
+            <th>人員</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody style={{ fontSize: 16 }}>
+          {currentPosts.map((item) => (
+            <tr key={item.id}>
+              <MMTable data={item} />
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+
+      <ReactPaginate
+        breakLabel="..."
+        nextLabel=">"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={3}
+        marginPagesDisplayed={1}
+        pageCount={pageCount}
+        previousLabel="<"
+        renderOnZeroPageCount={null}
+        containerClassName="pagination"
+        pageLinkClassName="page-num"
+        previousLinkClassName="page-num"
+        nextLinkClassName="page-num"
+        activeLinkClassName="active"
+      />
+      <CSVLink
+        data={filteredTime}
+        filename={"my-mm-file.csv"}
+        className="btn w-100"
+        style={{ backgroundColor: "#ff6d28" }}
+        target="_blank"
+      >
+        Download CSV
+      </CSVLink>
+
       <ModalMMForm show={show} handleClose={handleClose} />
-    </Container>
+    </Stack>
   );
 };
 export default MMCenter;

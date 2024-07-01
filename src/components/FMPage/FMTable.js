@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import dayjs from "dayjs";
+//context
 import { useAuth } from "../../context/AuthContext";
-import { MdEdit, MdDeleteForever } from "react-icons/md";
-import { Modal } from "react-bootstrap";
+//components
 import EditFMForm from "./EditFMForm";
+//react-bootstrap
+import { Modal } from "react-bootstrap";
+//icons
+import { MdEdit, MdDeleteForever } from "react-icons/md";
 
 const FMTable = ({ data }) => {
   const { handleFMDel } = useAuth();
@@ -39,7 +43,7 @@ const FMTable = ({ data }) => {
         </Modal.Header>
 
         <Modal.Body>
-          <EditFMForm theData={data} />
+          <EditFMForm theData={data} handleClose={handleClose} />
         </Modal.Body>
       </Modal>
     </>

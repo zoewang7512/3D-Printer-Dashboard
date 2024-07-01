@@ -1,5 +1,7 @@
+//components
 import Progress from "../Progress";
 import BlockCard from "../BlockCard";
+//react-bootstrap
 import { Row, Col } from "react-bootstrap";
 
 const DateCard = ({ value }) => {

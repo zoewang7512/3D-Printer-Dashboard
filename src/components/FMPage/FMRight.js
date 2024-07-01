@@ -1,25 +1,28 @@
-import { Container, Row, Col } from "react-bootstrap";
 import React, { useContext } from "react";
+//context
 import InfoContext from "../../context/InfoContext";
+//components
 import FMChart from "./FMChart";
 import BlockCard from "../BlockCard";
+//react-bootstrap
+import { Container, Row, Col, Stack } from "react-bootstrap";
 
 const FMRight = () => {
   const { allFMData } = useContext(InfoContext);
 
   return (
-    <div className="pmRight">
+    <Stack gap={2} className=" mx-auto">
       {allFMData.map((value) => (
         <Container>
           <Row>
-            <Col>
+            <Col sm>
               <BlockCard
                 title={"總設備數"}
                 text={value.totalEqpt}
                 color={"#ffffff"}
               />
             </Col>
-            <Col>
+            <Col sm>
               <BlockCard
                 title={"運行設備數"}
                 text={value.runEqpt}
@@ -29,14 +32,14 @@ const FMRight = () => {
           </Row>
 
           <Row>
-            <Col>
+            <Col sm>
               <BlockCard
                 title={"閒置設備數"}
                 text={value.idleEqpt}
                 color={"#ffffff"}
               />
             </Col>
-            <Col>
+            <Col sm>
               <BlockCard
                 title={"設備利用率"}
                 text={Math.round((value.runEqpt / value.totalEqpt) * 100) + "%"}
@@ -46,15 +49,14 @@ const FMRight = () => {
           </Row>
 
           <Row>
-            <Col>
-              {" "}
+            <Col sm>
               <BlockCard
                 title={"故障設備數"}
                 text={value.faultEqpt}
                 color={"#ffffff"}
               />
             </Col>
-            <Col>
+            <Col sm>
               <BlockCard
                 title={"設備故障率"}
                 text={
@@ -64,15 +66,10 @@ const FMRight = () => {
               />
             </Col>
           </Row>
-
-          <Row>
-            <Col>
-              <FMChart />
-            </Col>
-          </Row>
         </Container>
       ))}
-    </div>
+      <FMChart />
+    </Stack>
   );
 };
 export default FMRight;

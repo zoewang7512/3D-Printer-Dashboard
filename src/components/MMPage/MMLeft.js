@@ -1,21 +1,20 @@
-import { Container, Row, Col } from "react-bootstrap";
+//components
 import ShowTime from "../Home/ShowTime";
 import SearchBar from "./SearchBar";
 import BlockCard from "../BlockCard";
+//react-bootstrap
+import { Container, Row, Col, Stack } from "react-bootstrap";
 
 const MMLeft = () => {
   return (
-    <div className="mmleft">
+    <Stack gap={1} className=" mx-auto">
+      <div className="p-1">
+        <ShowTime />
+      </div>
+      <div className="p-1">
+        <SearchBar />
+      </div>
       <Container>
-        <Row>
-          <Col>
-            <ShowTime />
-          </Col>
-        </Row>
-        <Row>
-          <SearchBar />
-        </Row>
-
         <Row>
           <Col>
             <BlockCard
@@ -33,7 +32,7 @@ const MMLeft = () => {
           </Col>
         </Row>
       </Container>
-    </div>
+    </Stack>
   );
 };
 export default MMLeft;

@@ -40,32 +40,32 @@ const Login = () => {
             className="mx-auto"
             style={{ color: "#FF6D28", fontSize: "80px" }}
           />
-          <h2>Log In</h2>
-          {error && <Alert color="danger">{error}</Alert>}
+          <h5>Log In</h5>
+          {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
             <FormGroup>
-              <Form.Label for="Email"></Form.Label>
+              <Form.Label htmlFor="Email"></Form.Label>
               <Form.Control
-                //innerRef={emailRef}
                 ref={emailRef}
-                placeholder="enter your email"
+                placeholder="Email"
                 type="email"
                 required
               />
             </FormGroup>
             <FormGroup>
-              <Form.Label for="Password"></Form.Label>
+              <Form.Label htmlFor="Password"></Form.Label>
               <Form.Control
-                //innerRef={passwordRef}
                 ref={passwordRef}
-                placeholder="enter your password"
+                placeholder="密碼"
                 type="password"
                 required
               />
             </FormGroup>
-
+            <span style={{ fontSize: "14px", color: "#B5C0D0" }}>
+              如有登入問題，請聯繫資訊處分機號碼#3312
+            </span>
             <Button
-              className="w-100 mt-3"
+              className="w-100 mt-2"
               type="submit"
               disabled={loading}
               color="primary"

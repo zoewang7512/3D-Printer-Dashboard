@@ -9,7 +9,10 @@ import {
   Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
+//context
 import InfoContext from "../../context/InfoContext";
+//react-bootstrap
+import { Stack } from "react-bootstrap";
 
 ChartJS.register(
   CategoryScale,
@@ -43,11 +46,10 @@ const PMChart = () => {
   };
 
   return (
-    <div className="pmchart">
+    <Stack gap={2}>
       <h5>圖表</h5>
-
       <Bar data={userData} />
-    </div>
+    </Stack>
   );
 };
 export default PMChart;

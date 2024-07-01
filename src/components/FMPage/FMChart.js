@@ -6,9 +6,10 @@ import {
   BarElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
+//context
 import InfoContext from "../../context/InfoContext";
 
 ChartJS.register(
@@ -23,12 +24,12 @@ ChartJS.register(
 export const options = {
   scales: {
     x: {
-      stacked: true
+      stacked: true,
     },
     y: {
-      stacked: true
-    }
-  }
+      stacked: true,
+    },
+  },
 };
 
 const FMChart = () => {
@@ -42,7 +43,7 @@ const FMChart = () => {
 
         backgroundColor: ["#54B4D3"],
         borderColor: "white",
-        borderWidth: 0.5
+        borderWidth: 0.5,
       },
       {
         label: "閒置",
@@ -50,22 +51,18 @@ const FMChart = () => {
 
         backgroundColor: ["#332D2D"],
         borderColor: "white",
-        borderWidth: 0.5
+        borderWidth: 0.5,
       },
       {
         label: "故障",
         data: last5FMdata.map((value) => value.faultEqpt),
         backgroundColor: ["#ff6d28"],
         borderColor: "white",
-        borderWidth: 0.5
-      }
-    ]
+        borderWidth: 0.5,
+      },
+    ],
   };
 
-  return (
-    <div className="progressBar">
-      <Bar options={options} data={userData} />
-    </div>
-  );
+  return <Bar options={options} data={userData} />;
 };
 export default FMChart;

@@ -1,9 +1,12 @@
 import React, { useContext } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import dayjs from "dayjs";
+//context
 import InfoContext from "../../context/InfoContext";
+//components
 import RecordTable from "./RecordTable";
-
 import BlockCard from "../BlockCard";
+//react-bootstrap
+import { Container, Row, Col, Stack } from "react-bootstrap";
 
 const MMInfo = () => {
   //useContext
@@ -11,35 +14,30 @@ const MMInfo = () => {
   const currentPosts = MaintenanceLog.slice(0, 10);
 
   return (
-    <div className="building">
+    <Stack gap={2} className=" mx-auto">
       <h5>維修</h5>
       <Container>
         <Row>
-          <Col>
+          <Col sm>
             <BlockCard
               title={"下次保養日期"}
-              text={"03/15"}
+              text={dayjs().month() + "/15"}
               color={"#ffffFF"}
             />
           </Col>
-          <Col>
+          <Col sm>
             <BlockCard
               title={"原廠保養日期"}
-              text={"03/20"}
+              text={dayjs().month() + "/20"}
               color={"#ffffFF"}
             />
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <div className="tableArea">
-              <h5>近期維修紀錄</h5>
-              <RecordTable data={currentPosts} />
-            </div>
           </Col>
         </Row>
       </Container>
-    </div>
+
+      <h5>近期維修紀錄</h5>
+      <RecordTable data={currentPosts} />
+    </Stack>
   );
 };
 export default MMInfo;

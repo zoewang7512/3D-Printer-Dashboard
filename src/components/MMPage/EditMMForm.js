@@ -2,8 +2,8 @@ import React, { useState, useRef } from "react";
 import { Alert, Form, Button } from "react-bootstrap";
 import { useAuth } from "../../context/AuthContext";
 
-const EditFMForm = ({ theData }) => {
-  const [error, setError] = useState("");
+const EditFMForm = ({ theData, handleClose }) => {
+  //const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const id = theData.id;
@@ -23,7 +23,7 @@ const EditFMForm = ({ theData }) => {
     e.preventDefault();
 
     try {
-      setError("");
+      //setError("");
       setLoading(true);
       await handleMMEdit(
         id,
@@ -33,54 +33,60 @@ const EditFMForm = ({ theData }) => {
         serialNumRef.current.value
       );
     } catch {
-      setError("資料新增錯誤");
+      //setError("資料修改錯誤");
+      alert("資料修改錯誤");
     }
     setLoading(false);
+    handleClose();
   }
 
   return (
     <div>
       <Form onSubmit={handleSubmit}>
         <Form.Group>
-          {error && <Alert color="danger">{error}</Alert>}
-          <Form.Label for="exampleDate">日期</Form.Label>
+          {/*error && <Alert variant="danger">{error}</Alert>*/}
+          <Form.Label htmlFor="exampleDate">日期</Form.Label>
           <Form.Control
             id="maintenanceDate"
             name="maintenanceDate"
             type="date"
             defaultValue={date}
-            innerRef={dateRef}
+            ref={dateRef}
+            required
           />
         </Form.Group>
         <Form.Group>
-          <Form.Label for="serialNum">機身號碼</Form.Label>
+          <Form.Label htmlFor="serialNum">機身號碼</Form.Label>
           <Form.Control
             id="serialNum"
             name="serialNum"
             type="text"
             defaultValue={serialNum}
-            innerRef={serialNumRef}
+            ref={serialNumRef}
+            required
           />
         </Form.Group>
         <Form.Group>
-          <Form.Label for="maintenanceNotes">備註</Form.Label>
+          <Form.Label htmlFor="maintenanceNotes">備註</Form.Label>
           <Form.Control
             id="maintenanceNotes"
             name="maintenanceNotes"
             type="text"
             defaultValue={notes}
-            innerRef={notesRef}
+            ref={notesRef}
+            required
           />
         </Form.Group>
         <Form.Group>
-          <Form.Label for="maintenanceApplicant">人員</Form.Label>
+          <Form.Label htmlFor="maintenanceApplicant">人員</Form.Label>
           <Form.Control
             id="applicant"
             name="applicant"
             type="text"
             defaultValue={applicant}
-            innerRef={applicantRef}
+            ref={applicantRef}
             className="mb-3"
+            required
           />
         </Form.Group>
 
