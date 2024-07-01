@@ -1,10 +1,16 @@
 # 3D列印機設備管理面板 3D-Printer-Dashboard
 
 一個用來管理多台3DP列印機的網站，而且可以依照現場機器狀況來規劃生產計劃表，查看與監測每日列印機機況，及紀錄列印機維修狀況。
+
 A website for managing 3DP printers and planning production schedules, monitoring daily printer conditions and registering printer maintenance records.
 
 Website Link: https://dp-react-firebase.web.app/
 
+Login: reader1@gmail.com
+Password: 00001234
+
+#資料庫層級角色 Database-level roles
+(圖片待補)
 
 # Getting Started with Create React App
 
