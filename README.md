@@ -1,3 +1,10 @@
+# 3D-Printer-Dashboard
+
+A website for managing 3DP printers and planning production schedules, monitoring daily printer conditions and registering printer maintenance records.
+
+Website Link: https://dp-react-firebase.web.app/
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
