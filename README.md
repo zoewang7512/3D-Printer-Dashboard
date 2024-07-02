@@ -15,6 +15,8 @@ A website for managing 3DP printers and planning production schedules, monitorin
 密碼： 00001234
 ```
 
+<img src="images/screenshot.png">
+
 ## 安裝
 
 以下將會引導你如何安裝此專案到你的電腦上。
