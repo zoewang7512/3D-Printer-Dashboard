@@ -16,9 +16,9 @@ Login: reader1@gmail.com
 Password: 00001234
 
 
-## 網站地圖 Site Map
+## 網站地圖 Sitemap
 
-![sitemap](https://github.com/zoewang7512/manager3dp/assets/64351360/b134a427-9210-4dbc-a1d6-6d646c76b843)
+![sitemap](images/sitemap.svg)
 
 
 ## 資料庫層級角色 Database-level roles
