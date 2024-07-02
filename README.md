@@ -23,7 +23,7 @@ Password: 00001234
 
 ## 資料庫層級角色 Database-level roles
 
-![3D列印機設備管理面板 sitemap](https://github.com/zoewang7512/manager3dp/assets/64351360/8b22f691-530e-4b52-8e20-6420adfdf48e)
+![level-roles](images/database-level-roles.svg)
 
 
 
